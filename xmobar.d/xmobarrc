@@ -1,0 +1,14 @@
+Config {
+  font = "xft:Segoe UI:size=10:antialias=true,xft:MeiryoKe_Console:antialias=true",
+  bgColor = "#002b36",
+  fgColor = "#657b83",
+  borderColor = "#073642",
+  persistent = True,
+  commands = [
+    Run Date "%a %b %_d %Y %H:%M" "date" 10,
+    Run StdinReader
+  ],
+  sepChar = "%",
+  alignSep = "}{",
+  template = "%StdinReader% }{ %date%"
+}

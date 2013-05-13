@@ -1,0 +1,61 @@
+source ~/.files/zsh.d/packages
+source ~/.files/zsh.d/prompt
+
+# Lines configured by zsh-newuser-install
+bindkey -v
+# End of lines configured by zsh-newuser-install
+
+# The following lines were added by compinstall
+zstyle ':compinstall' filename '~/.zshrc'
+zstyle ':completion:*' ignore-parents parent pwd ..
+
+autoload -Uz compinit
+compinit
+# End of lines added by compinstall
+
+setopt auto_cd
+setopt auto_pushd
+setopt correct
+setopt extended_glob
+setopt extended_history
+setopt hist_expand
+setopt hist_find_no_dups
+setopt hist_ignore_all_dups
+setopt hist_ignore_dups
+setopt hist_ignore_space
+setopt hist_save_no_dups
+setopt inc_append_history
+setopt long_list_jobs
+setopt magic_equal_subst
+setopt no_beep
+setopt noflowcontrol
+setopt noignoreeof
+setopt share_history
+setopt transient_rprompt
+
+alias tmux="tmux -2"
+
+case $OSTYPE in
+  linux*)
+    alias la="ls -lhAF --color=auto"
+  ;;
+  freebsd*)
+    alias la="ls -lhAFG"
+  ;;
+esac
+
+if [ -x $(which vim) ]; then
+  alias vi="vim"
+fi
+
+bindkey '^Q' push-line-or-edit
+bindkey '^R' history-incremental-pattern-search-backward
+bindkey '^S' history-incremental-pattern-search-forward
+
+HISTFILE=~/.histfile
+HISTSIZE=100
+REPORT_TIME=3
+SAVEHIST=100000
+
+[ -f ~/.zshrc.local ] && source ~/.zshrc.local
+who

@@ -1,0 +1,19 @@
+[alias]
+	ci = commit
+	cit = commit -a -m
+	co = checkout
+	l = log --oneline --decorate
+	st = status
+	unstage = reset HEAD --
+[color]
+	ui = auto
+[core]
+	autocrlf = input
+[push]
+	default = simple
+[branch]
+	autosetuprebase = always
+[include]
+	path = ~/.gitconfig.local
+[interactive]
+	singlekey = true

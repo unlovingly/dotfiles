@@ -1,0 +1,15 @@
+.neocon
+.bundler
+.npm
+.unite
+.zsh
+.gem
+.composer
+.vim/
+.heroku
+.z*
+.d/submodules/
+*.png
+*.jpg
+*.jpeg
+*.gif
