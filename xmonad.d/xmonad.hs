@@ -12,5 +12,5 @@ main = do
       focusedBorderColor = "#6c71c4",
       manageHook = manageDocks <+> manageHook defaultConfig,
       layoutHook = avoidStruts  $  layoutHook defaultConfig,
-      modMask = mod4Mask
+      modMask = controlMask .|. mod1Mask
     }
