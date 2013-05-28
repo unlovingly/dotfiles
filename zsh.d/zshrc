@@ -39,7 +39,7 @@ case $OSTYPE in
   linux*)
     alias la="ls -lhAF --color=auto"
   ;;
-  freebsd*)
+  freebsd*|darwin*)
     alias la="ls -lhAFG"
   ;;
 esac
