@@ -1,7 +1,5 @@
-repositories=~/.files/submodules/
-
 ## auto-fu.zsh stuff.
-source ${repositories}/auto-fu.zsh/auto-fu.zsh
+source ${PATH_TO_DOTFILES}/submodules/auto-fu.zsh/auto-fu.zsh
 { . ~/.zsh/auto-fu; auto-fu-install; }
 zstyle ':auto-fu:highlight' input bold
 zstyle ':auto-fu:highlight' completion fg=black,bold
@@ -16,16 +14,16 @@ zstyle ':completion:*' completer _oldlist _complete
 zstyle ':auto-fu:var' autoable-function/skiplines '[[:space:]]#sudo pacman *' '[[:space:]]#rake *'
 
 ## for z.sh
-source ${repositories}/z/z.sh
+source ${PATH_TO_DOTFILES}/submodules/z/z.sh
 # そのうちフック使う
 function precmd() {
   _z --add "$(pwd -P)"
 }
 
 ## for zaw.zsh
-source ${repositories}/zaw/zaw.zsh
+source ${PATH_TO_DOTFILES}/submodules/zaw/zaw.zsh
 bindkey '^H' zaw-history
 
-source ${repositories}/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ${PATH_TO_DOTFILES}/submodules/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-fpath=(${repositories}/zsh-completions/src $fpath)
+fpath=(${PATH_TO_DOTFILES}/submodules/zsh-completions/src $fpath)
