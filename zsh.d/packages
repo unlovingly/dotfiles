@@ -16,7 +16,10 @@ function push_wd_to_stack() {
   _z --add "$(pwd -P)"
 }
 
+## for zaw.zsh
 source ${PATH_TO_DOTFILES}/submodules/zaw/zaw.zsh
+source ${PATH_TO_DOTFILES}/zsh.d/zaw/zaw-z.zsh
+
 source ${PATH_TO_DOTFILES}/submodules/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 fpath=(${PATH_TO_DOTFILES}/submodules/zsh-completions/src $fpath)
