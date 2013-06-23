@@ -1,3 +1,5 @@
+autoload -Uz add-zsh-hook
+
 ## auto-fu.zsh stuff.
 source ${PATH_TO_DOTFILES}/submodules/auto-fu.zsh/auto-fu.zsh
 { . ~/.zsh/auto-fu; auto-fu-install; }
@@ -8,14 +10,13 @@ zle-line-init () {auto-fu-init;}; zle -N zle-line-init
 
 ## for z.sh
 source ${PATH_TO_DOTFILES}/submodules/z/z.sh
-# そのうちフック使う
-function precmd() {
+
+add-zsh-hook precmd push_wd_to_stack
+function push_wd_to_stack() {
   _z --add "$(pwd -P)"
 }
 
-## for zaw.zsh
 source ${PATH_TO_DOTFILES}/submodules/zaw/zaw.zsh
-
 source ${PATH_TO_DOTFILES}/submodules/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 fpath=(${PATH_TO_DOTFILES}/submodules/zsh-completions/src $fpath)
