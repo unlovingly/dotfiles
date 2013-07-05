@@ -19,3 +19,6 @@
 [submodule "submodules/grunt-zsh-completion"]
 	path = submodules/grunt-zsh-completion
 	url = git://github.com/yonchu/grunt-zsh-completion.git
+[submodule "submodules/zsh-history-substring-search"]
+	path = submodules/zsh-history-substring-search
+	url = git://github.com/zsh-users/zsh-history-substring-search.git
