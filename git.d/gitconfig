@@ -5,6 +5,7 @@
 	l = log --oneline --decorate
 	st = status
 	unstage = reset HEAD --
+	graph = log --color --graph --pretty='format:%x09%h <%cn> %ci %s'
 [color]
 	ui = auto
 [core]
