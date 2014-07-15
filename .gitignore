@@ -3,7 +3,6 @@
 .LSOverride
 Icon
 
-
 # Thumbnails
 ._*
 
@@ -15,3 +14,6 @@ Icon
 Session.vim
 .netrwhist
 *~
+
+fish.d/fish_history
+fish.d/fishd*
