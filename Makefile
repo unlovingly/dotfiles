@@ -1,24 +1,22 @@
-prefix := ~/.config/fish
+config := ~/.config/fish
+prefix := ~/.local
 # SHELL := $(which fish)
 
 .PHONY: clean
 clean:
-	if test -L $(prefix); then \
-		unlink $(prefix); \
+	if test -L $(config); then \
+		unlink $(config); \
 	fi
-	if test -d $(prefix).orig; then \
-		mv $(prefix).orig $(prefix); \
+	if test -d $(config).orig; then \
+		mv $(config).orig $(config); \
 	fi
 
 .PHONY: install
 install:
-	if ! test -d ~/.oh-my-fish; then \
-		curl -L https://github.com/bpinto/oh-my-fish/raw/master/tools/install.fish | fish; \
+	if test -f $(config); then \
+		mv $(config) $(config).orig; \
 	fi
-	if test -f $(prefix); then \
-		mv $(prefix) $(prefix).orig; \
-	fi
-	ln -s $(CURDIR)/fish.d $(prefix)
+	ln -s $(CURDIR)/fish.d $(config)
 
 .PHONY: reinstall
 reinstall: clean install ;
