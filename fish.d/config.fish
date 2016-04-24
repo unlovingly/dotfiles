@@ -1,27 +1,12 @@
-# Path to your oh-my-fish.
-set fish_path $HOME/.oh-my-fish
+set -U ANDROID_HOME /usr/local/opt/android-sdk
+set -U ENHANCD_FILTER peco
+set -U GOPATH ~/.local/go
+set -U NODE_PATH /usr/local/lib/node_modules
+set -U PATH /usr/local/bin $PATH $GOPATH/bin ~/.composer/vendor/bin
 
-# Theme
-set fish_theme unkind
+source ~/.local/enhancd/fish/enhancd.fish
 
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-fish/plugins/*)
-# Custom plugins may be added to ~/.oh-my-fish/custom/plugins/
-# Example format: set fish_plugins autojump bundler
-set fish_plugins node php tmux
-
-# Path to your custom folder (default path is $FISH/custom)
-set fish_custom $HOME/.config/fish
-
-# Load oh-my-fish configuration.
-. $fish_path/oh-my-fish.fish
-
-set -x GOPATH ~/.local/go
-set -x PATH /usr/local/bin $PATH $GOPATH/bin ~/.composer/vendor/bin
-set -x NODE_PATH /usr/local/lib/node_modules
-set -x GIT_EDITOR '/Applications/MacVim.app/Contents/MacOS/Vim -g -f '
-set -x ANDROID_HOME /usr/local/opt/android-sdk
-
-set -g fish_key_bindings oh_my_key_bindings
+set -U fish_key_bindings rebind_keys
 
 alias vi    vim
 alias vim   /Applications/MacVim.app/Contents/MacOS/Vim
