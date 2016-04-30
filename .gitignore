@@ -17,3 +17,4 @@ Session.vim
 
 fish.d/fish_history
 fish.d/fishd*
+fish.d/env.fish

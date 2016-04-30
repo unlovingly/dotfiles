@@ -1,5 +1,5 @@
 function peco_select_history --description "Change current directory to hisotry\'s root that managed by ghq"
-    history | peco --select-1 | read -l line; commandline $line
+  history | peco --select-1 | read -l line; and commandline $line
 
-    commandline -f repaint
+  commandline -f repaint
 end

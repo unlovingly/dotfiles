@@ -1,28 +1,27 @@
 [alias]
-	ci = commit
-	cit = commit -a -m
-	co = checkout
-	df = diff --color-words --find-copies --find-renames --ignore-all-space
-	l = log --color-words --decorate --find-copies --find-renames --oneline
-	st = status --branch --short
-	unstage = reset HEAD --
-	graph = log --color --graph --pretty='format:%x09%h <%cn> %ci %s'
+  ci = commit
+  cit = commit -a -m
+  co = checkout
+  df = diff --color-words --find-copies --find-renames --ignore-all-space
+  l = log --color-words --decorate --find-copies --find-renames --oneline
+  st = status --branch --short
+  unstage = reset HEAD --
+  graph = log --color --graph --pretty='format:%x09%h <%cn> %ci %s'
 [color]
-	ui = auto
+  ui = auto
 [core]
-	autocrlf = input
-	editor = /Applications/MacVim.app/Contents/MacOS/Vim
-	quotepath = false
-	precomposeunicode = true
+  autocrlf = input
+  quotepath = false
+  precomposeunicode = true
 [push]
-	default = simple
+  default = simple
 [pull]
-	rebase = preserve
+  rebase = preserve
 [branch]
-	autosetuprebase = always
+  autosetuprebase = always
 [include]
-	path = .gitconfig.local
+  path = .gitconfig.local
 [interactive]
-	singlekey = true
+  singlekey = true
 [merge]
-	ff = false
+  ff = false

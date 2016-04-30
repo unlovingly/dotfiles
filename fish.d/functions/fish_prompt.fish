@@ -51,10 +51,11 @@ function fish_prompt
   fish_prompt_rprint "$basic_prompt$git_info" $job_info
 
   echo -n -s $prompt
+  set_color normal
 
   set -e git_info (fish_prompt_git)
   set -e job_info (fish_prompt_job)
-  set -e vi_mode  (fish_prompt_vi_mode)
+  set -e vi_mode (fish_prompt_vi_mode)
 end
 
 function fish_prompt_git
@@ -93,13 +94,13 @@ function fish_prompt_rprint --description 'Prints first argument left-aligned, s
     echo -s $argv
   else
     set -l arglength (echo -n -s "$argv[1]$argv[2]" | perl -le 'while (<>) {
-      s/ \e[ #%()*+\-.\/]. |
-          (?:\e\[|\x9b) [ -?]* [@-~] | # CSI ... Cmd
-          (?:\e\]|\x9d) .*? (?:\e\\|[\a\x9c]) | # OSC ... (ST|BEL)
-          (?:\e[P^_]|[\x90\x9e\x9f]) .*? (?:\e\\|\x9c) | # (DCS|PM|APC) ... ST
-          \e.|[\x80-\x9f] //xg;
-      print;
-    }' | awk '{printf length;}')
+    s/ \e[ #%()*+\-.\/]. |
+      (?:\e\[|\x9b) [ -?]* [@-~] | # CSI ... Cmd
+      (?:\e\]|\x9d) .*? (?:\e\\|[\a\x9c]) | # OSC ... (ST|BEL)
+      (?:\e[P^_]|[\x90\x9e\x9f]) .*? (?:\e\\|\x9c) | # (DCS|PM|APC) ... ST
+      \e.|[\x80-\x9f] //xg;
+    print;
+  }' | awk '{printf length;}')
 
     set -l termwidth (tput cols)
 
@@ -120,5 +121,7 @@ function fish_prompt_vi_mode
       set vi_mode '[i] '
     case visual
       set vi_mode '[v] '
+    case replace_one
+      set vi_mode '[r] '
   end
 end
