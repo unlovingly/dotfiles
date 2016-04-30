@@ -4,8 +4,6 @@ set -U GOPATH ~/.local/go
 set -U NODE_PATH /usr/local/lib/node_modules
 set -U PATH /usr/local/bin $PATH $GOPATH/bin ~/.composer/vendor/bin
 
-source ~/.local/enhancd/fish/enhancd.fish
-
 set -U fish_key_bindings rebind_keys
 
 alias vi    vim
