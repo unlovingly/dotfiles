@@ -1,127 +1,83 @@
 function fish_prompt
-  set -g git_info
-  set -g job_info
-  set -g vi_mode
+  set -l git_info (fish_prompt_git)
+  set -l vi_mode (fish_prompt_vi_mode)
 
   set -l last_status $status
 
-  # Colours
-  set -l cyan (set_color -o cyan)
-  set -l yellow (set_color -o yellow)
-  set -l green (set_color -o green)
-  set -l red (set_color -o red)
-  set -l blue (set_color -o blue)
-  set -l magenta (set_color magenta)
-  set -l white (set_color white)
-  set -l normal (set_color normal)
+  # TODO: shorten path if that too long
+  set -l basic_prompt (whoami)" at "(set_color yellow)(prompt_hostname)(set_color normal)" in "(set_color blue)(prompt_pwd)(set_color normal)
 
-  # Unconditional stuff
-  set -l path $blue(pwd | sed "s:^$HOME:~:")
-  set -l basic_prompt $yellow(whoami)$normal" at "$green(hostname -s)$normal" in "$blue$path" "
+  set -l prompt $vi_mode
 
-  # Prompt
-  set -l prompt
-  set -l UID (id -u $USER)
-
-  # Last command
   set -l status_info ""
 
-  fish_prompt_git
-  fish_prompt_job
-  fish_prompt_vi_mode
-
   if [ $last_status -ne 0 ]
-    set status_info "$red""command failed with status: $last_status"
+    set status_info (set_color red)"command failed with status: $last_status"(set_color normal)
   end
 
-  if [ "$UID" = "0" ]
-    set prompt "$red# "
+  if [ (id -u $USER) -eq 0 ]
+    set prompt (set_color red)"$prompt# "(set_color normal)
   else
-    set prompt "$normal$vi_mode% "
+    set prompt "$prompt% "
   end
 
-  # WTB: time spend on last command (if ≥ 1s)
-
-  ##################################################
-  # Output
   if [ -n $status_info ]
     echo -s $status_info
   end
 
-  fish_prompt_rprint "$basic_prompt$git_info" $job_info
+  fish_prompt_print_first_line $basic_prompt $git_info
 
   echo -n -s $prompt
-  set_color normal
-
-  set -e git_info (fish_prompt_git)
-  set -e job_info (fish_prompt_job)
-  set -e vi_mode (fish_prompt_vi_mode)
 end
 
 function fish_prompt_git
   if [ (command git rev-parse --is-inside-work-tree ^/dev/null) ]
-    # Get the current branch name/commit
+    set -l result
     set -l git_branch_name (command git symbolic-ref HEAD ^/dev/null | sed -e 's|^refs/heads/||')
+
     if [ -z $git_branch_name ]
       set git_branch_name (command git show-ref --head -s --abbrev | head -n1 2> /dev/null)
     end
 
     # Unconditional git component
-    set git_info "$normal""on $white$git_branch_name"
+    set result "on "(set_color white)"$git_branch_name"
 
     if [ (command git status -s --ignore-submodules=dirty | wc -l) -gt 0 ]
-      set git_info "$git_info$yellow*"
+      set result "$result"(set_color yellow)"*"
     end
 
-    set git_info "$git_info "
+    echo "$result"(set_color normal)
   end
 end
 
-function fish_prompt_job
-  set -l job_count (jobs -c | wc -l | awk '{ print $1; }')
-
-  if [ $job_count -gt 0 ]
-    if [ $job_count -eq 1 ]
-      set job_info "$magenta""($job_count job)"
-    else
-      set job_info "$magenta""($job_count jobs)"
-    end
-  end
-end
-
-function fish_prompt_rprint --description 'Prints first argument left-aligned, second argument right-aligned, newline'
+function fish_prompt_print_first_line --description 'Prints first argument left-aligned, second argument right-aligned, newline'
   if [ (count $argv) = 1 ]
     echo -s $argv
   else
-    set -l arglength (echo -n -s "$argv[1]$argv[2]" | perl -le 'while (<>) {
-    s/ \e[ #%()*+\-.\/]. |
-      (?:\e\[|\x9b) [ -?]* [@-~] | # CSI ... Cmd
-      (?:\e\]|\x9d) .*? (?:\e\\|[\a\x9c]) | # OSC ... (ST|BEL)
-      (?:\e[P^_]|[\x90\x9e\x9f]) .*? (?:\e\\|\x9c) | # (DCS|PM|APC) ... ST
-      \e.|[\x80-\x9f] //xg;
-    print;
-  }' | awk '{printf length;}')
-
-    set -l termwidth (tput cols)
-
+    set -l left $argv[1]
+    set -l right $argv[2]
+    # remove ANSI color
+    set -l arglength (string length (string replace -ra '\x1b.*?[mGKH]' '' "$left$right"))
     set -l padding
-    if [ $arglength -lt $termwidth ]
-      set padding (printf "%0"(math $termwidth - $arglength)"d"|tr "0" " ")
+
+    if [ $arglength -lt $COLUMNS ]
+      # don't know the reason why `set_color normal` counted as the character
+      set padding (string repeat --count (math $COLUMNS - $arglength + 2 + 1) " ")
     end
 
-    echo -s "$argv[1]$padding$argv[2]"
+    echo -s "$left$padding$right"
   end
 end
 
 function fish_prompt_vi_mode
   switch $fish_bind_mode
     case default
-      set vi_mode '[n] '
+      echo '[n] '
     case insert
-      set vi_mode '[i] '
+      echo '[i] '
     case visual
-      set vi_mode '[v] '
+      echo '[v] '
     case replace_one
-      set vi_mode '[r] '
+      echo '[r] '
   end
 end
