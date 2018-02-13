@@ -11,5 +11,9 @@
 ```
 
 ```sh
-% cd ~/.files && make install
+% cd ~/.files
+```
+
+```sh
+% cd fish.d; and make install
 ```

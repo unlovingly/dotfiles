@@ -9,7 +9,7 @@ set -g -x PATH /usr/local/bin $PATH $GOPATH/bin ~/.composer/vendor/bin
 
 # for HOMEBREW_GITHUB_API_TOKEN
 if set -q XDG_CONFIG_HOME
-  source $XDG_CONFIG_HOME/fish/env.fish
+    source $XDG_CONFIG_HOME/fish/env.fish
 else
-  source ~/.config/fish/env.fish
+    source ~/.config/fish/env.fish
 end

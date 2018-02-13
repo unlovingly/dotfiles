@@ -16,7 +16,7 @@ install:
 	if test -f $(config); then \
 		mv $(config) $(config).orig; \
 	fi
-	ln -s $(CURDIR)/fish.d $(config)
+	ln -s $(CURDIR) $(config)
 
 .PHONY: reinstall
 reinstall: clean install ;
