@@ -1,27 +1,31 @@
 [alias]
+  amit = commit --amend --no-edit
   ci = commit
   cit = commit -a -m
   co = checkout
-  df = diff --color-words --find-copies --find-renames --ignore-all-space
-  l = log --color-words --decorate --find-copies --find-renames --oneline
+  df = diff --color --color-moved --find-renames=12% --find-copies=12% --ignore-space-change --ignore-all-space --ignore-blank-lines
   st = status --branch --short
   unstage = reset HEAD --
-  graph = log --color --graph --pretty='format:%x09%h <%cn> %ci %s'
+[branch]
+  autosetuprebase = always
 [color]
   ui = auto
 [core]
   autocrlf = input
   quotepath = false
   precomposeunicode = true
-[push]
-  default = simple
-[pull]
-  rebase = preserve
-[branch]
-  autosetuprebase = always
+	pager = less -S
+[diff]
+  algorithm = histogram
+  indentHeuristic = true
+  whitespace = -blank-at-eol,-space-before-tab,-indent-with-non-tab,-tab-in-indent,-blank-at-eof,-trailing-space,-cr-at-eol
 [include]
   path = .gitconfig.local
 [interactive]
   singlekey = true
 [merge]
   ff = false
+[pull]
+  rebase = preserve
+[push]
+  default = simple
