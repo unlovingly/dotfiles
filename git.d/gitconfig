@@ -1,6 +1,7 @@
 [alias]
-  amit = commit --amend --no-edit
   ci = commit
+  cia = commit --amend --no-edit
+  cim = commit -m
   cit = commit -a -m
   co = checkout
   df = diff --color --color-moved --find-renames=12% --find-copies=12% --ignore-space-change --ignore-all-space --ignore-blank-lines
