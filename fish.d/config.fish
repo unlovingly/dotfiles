@@ -1,6 +1,6 @@
 set -g ANDROID_HOME /usr/local/opt/android-sdk
 set -g GOPATH ~/.local/go
-set -g JAVA_HOME (/usr/libexec/java_home -v 1.9)
+set -g JAVA_HOME /usr/libexec/java_home
 set -g NODE_PATH /usr/local/lib/node_modules
 
 set -g fish_key_bindings rebind_keys
@@ -13,3 +13,5 @@ if set -q XDG_CONFIG_HOME
 else
     source ~/.config/fish/env.fish
 end
+
+source ~/.config/fish/aliases.fish

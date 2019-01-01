@@ -6,8 +6,8 @@ function rebind_keys
     bind -e -M default \cr
     bind -e \cr
 
-    bind -M insert \ce peco_select_repository
+    bind -M insert \ce select_repository
     bind -m insert \cr change_directory_to_repositorys_root
-    bind -M insert \cr peco_select_history
-    bind -M default -m insert \cr peco_execute_from_history
+    bind -M insert \cr select_history
+    bind -M default -m insert \cr execute_from_history
 end

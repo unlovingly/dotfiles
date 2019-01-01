@@ -1,11 +1,13 @@
 # Requirements
+
 - git
 - ghq
-- peco (fzf)
   - golang runtime
-- fish shell (2.7.0 <=)
+- peco (fzf)
+- fish shell (3.0.0 <=)
 
 # Installation
+
 ```sh
 % git clone git://github.com/unlovingly/dotfiles.git ~/.files
 ```
@@ -15,5 +17,5 @@
 ```
 
 ```sh
-% cd fish.d; and make install
+% cd fish.d && make install
 ```
