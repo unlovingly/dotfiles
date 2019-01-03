@@ -1,7 +1,6 @@
 function fish_prompt
     set -l exit_code $status
     set -l git_info (fish_prompt_git)
-    set -l vi_mode (fish_prompt_vi_mode)
 
     set -l name (whoami)
     set -l mood " "(fish_prompt_status $exit_code)
@@ -10,18 +9,18 @@ function fish_prompt
 
     set -l basic_prompt $name$mood$location$cwd
 
-    set -l prompt $vi_mode" % "
+    set -l prompt (fish_default_mode_prompt) "% "
 
-    fish_prompt_print_first_line $basic_prompt $git_info
+    fish_prompt_print_line $basic_prompt $git_info
 
     echo -n -s $prompt
 end
 
 function fish_prompt_status
     if test $argv[1] -eq 0
-        echo (set_color green)":)"(set_color $fish_color_normal)
+        echo -n -s (set_color green)":)"(set_color $fish_color_normal)
     else
-        echo (set_color red)":("(set_color $fish_color_normal)
+        echo -n -s (set_color red)":("(set_color $fish_color_normal)
     end
 end
 
@@ -36,11 +35,11 @@ function fish_prompt_git
             set result "$result"(set_color yellow)"*"
         end
 
-        echo "$result"(set_color $fish_color_normal)
+        echo -n -s "$result"(set_color $fish_color_normal)
     end
 end
 
-function fish_prompt_print_first_line
+function fish_prompt_print_line
     if test (count $argv) -eq 1
         echo -s $argv
     else
@@ -57,18 +56,5 @@ function fish_prompt_print_first_line
         end
 
         echo -s "$left$padding$right"
-    end
-end
-
-function fish_prompt_vi_mode
-    switch $fish_bind_mode
-        case default
-            echo "[n]"
-        case insert
-            echo "[i]"
-        case visual
-            echo "[v]"
-        case replace_one
-            echo "[r]"
     end
 end
