@@ -11,15 +11,13 @@ function fish_prompt
 
     set -l git_info (__fish_git_prompt "on %s")
 
-    if not set -q ___fish_git_prompt_init
-        __fish_git_prompt_set_char __fish_git_prompt_char_cleanstate 'x'
-        __fish_git_prompt_set_char __fish_git_prompt_char_dirtystate "*" "+"
-        __fish_git_prompt_set_char __fish_git_prompt_char_invalidstate "#" "X"
-        __fish_git_prompt_set_char __fish_git_prompt_char_stagedstate '+' 'o'
-        __fish_git_prompt_set_char __fish_git_prompt_char_untrackedfiles '%' '...'
-        __fish_git_prompt_set_char __fish_git_prompt_char_upstream_ahead '>' '>>'
-        __fish_git_prompt_set_char __fish_git_prompt_char_upstream_behind '<' '<<'
-    end
+    __fish_git_prompt_set_char __fish_git_prompt_char_cleanstate "x"
+    __fish_git_prompt_set_char __fish_git_prompt_char_dirtystate "*" "+"
+    __fish_git_prompt_set_char __fish_git_prompt_char_invalidstate "#" "X"
+    __fish_git_prompt_set_char __fish_git_prompt_char_stagedstate "+" "o"
+    __fish_git_prompt_set_char __fish_git_prompt_char_untrackedfiles "%" ".."
+    __fish_git_prompt_set_char __fish_git_prompt_char_upstream_ahead ">" ">>"
+    __fish_git_prompt_set_char __fish_git_prompt_char_upstream_behind "<" "<<"
 
     set -l statuses "$name$mood$host$time$c_wd"
 

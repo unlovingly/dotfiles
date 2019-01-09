@@ -1,3 +1,5 @@
 function register_alias --description "Create alias"
-    alias $ARGV[1]=$ARGV[2]
+    if type -q $argv[1]
+        alias $argv[2]=$argv[1]
+    end
 end

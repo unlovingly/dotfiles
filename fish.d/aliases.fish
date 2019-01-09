@@ -1,1 +1,1 @@
-if type -q bat; alias cat=bat; end
+register_alias "bat" "cat"

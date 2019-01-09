@@ -14,7 +14,3 @@ Icon
 Session.vim
 .netrwhist
 *~
-
-fish.d/fish_history
-fish.d/fishd*
-fish.d/env.fish
