@@ -2,6 +2,14 @@
 set __fish_git_prompt_show_informative_status 'yes'
 set __fish_git_prompt_showcolorhints 'yes'
 
+set -g __fish_git_prompt_char_cleanstate "x"
+set -g __fish_git_prompt_char_dirtystate "*" "+"
+set -g __fish_git_prompt_char_invalidstate "#" "X"
+set -g __fish_git_prompt_char_stagedstate "+" "o"
+set -g __fish_git_prompt_char_untrackedfiles "%" ".."
+set -g __fish_git_prompt_char_upstream_ahead ">" ">>"
+set -g __fish_git_prompt_char_upstream_behind "<" "<<"
+
 function fish_prompt
     set -l name (whoami)
     set -l mood " "(fish_prompt_status $status)
@@ -10,14 +18,6 @@ function fish_prompt
     set -l c_wd " in "(set_color blue)(prompt_pwd)(set_color normal)
 
     set -l git_info (__fish_git_prompt "on %s")
-
-    __fish_git_prompt_set_char __fish_git_prompt_char_cleanstate "x"
-    __fish_git_prompt_set_char __fish_git_prompt_char_dirtystate "*" "+"
-    __fish_git_prompt_set_char __fish_git_prompt_char_invalidstate "#" "X"
-    __fish_git_prompt_set_char __fish_git_prompt_char_stagedstate "+" "o"
-    __fish_git_prompt_set_char __fish_git_prompt_char_untrackedfiles "%" ".."
-    __fish_git_prompt_set_char __fish_git_prompt_char_upstream_ahead ">" ">>"
-    __fish_git_prompt_set_char __fish_git_prompt_char_upstream_behind "<" "<<"
 
     set -l statuses "$name$mood$host$time$c_wd"
 
