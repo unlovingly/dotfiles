@@ -1,1 +1,0 @@
-register_alias "bat" "cat"
