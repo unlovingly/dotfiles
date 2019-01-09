@@ -2,14 +2,6 @@
 set __fish_git_prompt_show_informative_status 'yes'
 set __fish_git_prompt_showcolorhints 'yes'
 
-__fish_git_prompt_set_char __fish_git_prompt_char_cleanstate 'x'
-__fish_git_prompt_set_char __fish_git_prompt_char_dirtystate "*" "+"
-__fish_git_prompt_set_char __fish_git_prompt_char_invalidstate "#" "X"
-__fish_git_prompt_set_char __fish_git_prompt_char_stagedstate '+' 'o'
-__fish_git_prompt_set_char __fish_git_prompt_char_untrackedfiles '%' '...'
-__fish_git_prompt_set_char __fish_git_prompt_char_upstream_ahead '>' '>>'
-__fish_git_prompt_set_char __fish_git_prompt_char_upstream_behind '<' '<<'
-
 function fish_prompt
     set -l name (whoami)
     set -l mood " "(fish_prompt_status $status)
@@ -18,6 +10,16 @@ function fish_prompt
     set -l c_wd " in "(set_color blue)(prompt_pwd)(set_color normal)
 
     set -l git_info (__fish_git_prompt "on %s")
+
+    if not set -q ___fish_git_prompt_init
+        __fish_git_prompt_set_char __fish_git_prompt_char_cleanstate 'x'
+        __fish_git_prompt_set_char __fish_git_prompt_char_dirtystate "*" "+"
+        __fish_git_prompt_set_char __fish_git_prompt_char_invalidstate "#" "X"
+        __fish_git_prompt_set_char __fish_git_prompt_char_stagedstate '+' 'o'
+        __fish_git_prompt_set_char __fish_git_prompt_char_untrackedfiles '%' '...'
+        __fish_git_prompt_set_char __fish_git_prompt_char_upstream_ahead '>' '>>'
+        __fish_git_prompt_set_char __fish_git_prompt_char_upstream_behind '<' '<<'
+    end
 
     set -l statuses "$name$mood$host$time$c_wd"
 
@@ -43,8 +45,8 @@ function fish_prompt_print_line
         set -l right $argv[2]
 
         # remove ANSI escape sequences
-        set -l visible_text (string replace -ra "(\x1b\[[0-9;]*[msuJGHK]|\x0f)" "" "$left$right")
-        set -l arglength (echo $visible_text | wc -m) # https://github.com/fish-shell/fish-shell/issues/4012
+        set -l visible_text (string replace -ra "(?:\x1b\x28\x42|\x1b\[[0-9;]*[msuJGHK]|\x0f)" "" "$left$right")
+        set -l arglength (string length $visible_text)
         set -l padding (string repeat --count (math $COLUMNS - $arglength) " ")
 
         echo -s "$left$padding$right"
