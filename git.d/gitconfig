@@ -5,6 +5,7 @@
   cit = commit --all -m
   co = checkout
   df = diff --color --color-moved --find-renames=12% --find-copies=12% --ignore-space-change --ignore-all-space --ignore-blank-lines
+  lg = log --show-signature
   st = status --branch --short
   unstage = reset HEAD --
 [branch]
