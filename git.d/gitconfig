@@ -1,8 +1,8 @@
 [alias]
   ci = commit -S
-  cia = ci --amend --no-edit
-  cim = ci -m
-  cit = ci -a -m
+  cia = commit --amend --no-edit -S
+  cim = commit -S -m
+  cit = commit -S --all -m
   co = checkout
   df = diff --color --color-moved --find-renames=12% --find-copies=12% --ignore-space-change --ignore-all-space --ignore-blank-lines
   st = status --branch --short
