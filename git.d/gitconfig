@@ -1,8 +1,8 @@
 [alias]
-  ci = commit -S
-  cia = commit --amend --no-edit -S
-  cim = commit -S -m
-  cit = commit -S --all -m
+  ci = commit
+  cia = commit --amend --no-edit
+  cim = commit -m
+  cit = commit --all -m
   co = checkout
   df = diff --color --color-moved --find-renames=12% --find-copies=12% --ignore-space-change --ignore-all-space --ignore-blank-lines
   st = status --branch --short
@@ -11,6 +11,8 @@
   autosetuprebase = always
 [color]
   ui = auto
+[commit]
+  gpgSign = true
 [core]
   autocrlf = input
   quotepath = false
