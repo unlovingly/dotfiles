@@ -5,14 +5,14 @@ set -g NODE_PATH /usr/local/lib/node_modules
 
 set -g fish_key_bindings rebind_keys
 
-set -g -x PATH /usr/local/bin $PATH $GOPATH/bin ~/.composer/vendor/bin
+set -g -x PATH /usr/local/bin $PATH $GOPATH/bin ~/.composer/vendor/bin ~/.cargo/bin
 
 # for HOMEBREW_GITHUB_API_TOKEN
 if set -q XDG_CONFIG_HOME
     set -l p $XDG_CONFIG_HOME/fish/env.fish
     test -f $p && source $p
 else
-    set -l p ~/.config/fish/env.fish 
+    set -l p ~/.config/fish/env.fish
     test -f $p && source $p
 end
 
