@@ -1,10 +1,7 @@
 # Requirements
 
-- git
-- ghq
-  - golang runtime
-- peco (fzf)
 - fish shell (3.0.0 <=)
+- homebrew
 
 # Installation
 
@@ -17,5 +14,14 @@
 ```
 
 ```sh
-% cd fish.d && make install
+% brew bundle
+% task install
+```
+
+# Environment Variables
+
+## `XDG_CONFIG_HOME`
+
+```fish
+set -g -x XDG_CONFIG_HOME ~/.config
 ```

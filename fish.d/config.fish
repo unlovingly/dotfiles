@@ -5,7 +5,7 @@ set -g NODE_PATH /usr/local/lib/node_modules
 
 set -g fish_key_bindings rebind_keys
 
-set -g -x PATH /usr/local/bin $PATH $GOPATH/bin ~/.composer/vendor/bin ~/.cargo/bin
+set -g -x PATH /usr/local/bin $GOPATH/bin ~/.composer/vendor/bin ~/.cargo/bin $PATH
 
 # for HOMEBREW_GITHUB_API_TOKEN
 if set -q XDG_CONFIG_HOME
