@@ -1,0 +1,20 @@
+version: "2"
+
+vars:
+  TARGET: "~/.gitconfig"
+
+tasks:
+  clean:
+    cmds:
+      - unlink "{{.TARGET}}"
+    status:
+      - test -h "{{.TARGET}}"
+
+  install:
+    cmds:
+      - ln -s "{{.CWD}}/git.d/gitconfig" "{{.TARGET}}"
+    status:
+      - test ! -h "{{.TARGET}}"
+    vars:
+      CWD:
+        sh: pwd

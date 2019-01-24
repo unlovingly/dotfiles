@@ -1,0 +1,20 @@
+version: "2"
+
+vars:
+  TARGET: "{{.XDG_CONFIG_HOME}}/alacritty/alacritty.yml"
+
+tasks:
+  clean:
+    cmds:
+      - unlink "{{.TARGET}}"
+    status:
+      - test -h "{{.TARGET}}"
+
+  install:
+    cmds:
+      - ln -s "{{.CWD}}/alacritty.d/alacritty.yml" "{{.TARGET}}"
+    status:
+      - test ! -h "{{.TARGET}}"
+    vars:
+      CWD:
+        sh: pwd

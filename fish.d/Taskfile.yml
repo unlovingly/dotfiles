@@ -1,0 +1,20 @@
+version: "2"
+
+vars:
+  TARGET: "{{.XDG_CONFIG_HOME}}/fish/config.fish"
+
+tasks:
+  clean:
+    cmds:
+      - unlink "{{.TARGET}}"
+    status:
+      - test -h "{{.TARGET}}"
+
+  install:
+    cmds:
+      - ln -s "{{.CWD}}/fish.d/config.fish" "{{.TARGET}}"
+    status:
+      - test ! -h "{{.TARGET}}"
+    vars:
+      CWD:
+        sh: pwd
