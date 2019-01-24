@@ -1,0 +1,20 @@
+version: "2"
+
+vars:
+  TARGET: "{{.XDG_CONFIG_HOME}}/karabiner/karabiner.json"
+
+tasks:
+  clean:
+    cmds:
+      - unlink "{{.TARGET}}"
+    status:
+      - test -h "{{.TARGET}}"
+
+  install:
+    cmds:
+      - ln -s "{{.CWD}}/karabiner.d/karabiner.yml" "{{.TARGET}}"
+    status:
+      - test ! -h "{{.TARGET}}"
+    vars:
+      CWD:
+        sh: pwd
