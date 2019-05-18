@@ -8,7 +8,13 @@ window:
     y: 8
 
 font:
-  size: 13.0
+  bold:
+    family: Inconsolata Nerd Font Mono
+  italic:
+    family: Inconsolata Nerd Font Mono
+  normal:
+    family: Inconsolata Nerd Font Mono
+  size: 14.0
 
 # Colors (Solarized Dark)
 colors:
