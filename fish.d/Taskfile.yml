@@ -14,7 +14,7 @@ tasks:
     cmds:
       - ln -s "{{.CWD}}/fish.d/config.fish" "{{.TARGET}}"
     status:
-      - test ! -h "{{.TARGET}}"
+      - test -e "{{.TARGET}}"
     vars:
       CWD:
         sh: pwd

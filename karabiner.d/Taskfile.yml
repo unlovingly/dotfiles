@@ -14,7 +14,7 @@ tasks:
     cmds:
       - ln -s "{{.CWD}}/karabiner.d/karabiner.yml" "{{.TARGET}}"
     status:
-      - test ! -h "{{.TARGET}}"
+      - test -h "{{.TARGET}}"
     vars:
       CWD:
         sh: pwd

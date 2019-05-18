@@ -14,7 +14,7 @@ tasks:
     cmds:
       - ln -s "{{.CWD}}/git.d/gitconfig" "{{.TARGET}}"
     status:
-      - test ! -h "{{.TARGET}}"
+      - test -h "{{.TARGET}}"
     vars:
       CWD:
         sh: pwd

@@ -14,7 +14,7 @@ tasks:
     cmds:
       - ln -s "{{.CWD}}/alacritty.d/alacritty.yml" "{{.TARGET}}"
     status:
-      - test ! -h "{{.TARGET}}"
+      - test -e "{{.TARGET}}"
     vars:
       CWD:
         sh: pwd
