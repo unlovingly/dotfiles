@@ -18,10 +18,20 @@
 % task install
 ```
 
-# Environment Variables
-
-## `XDG_CONFIG_HOME`
+## Environment Variables
 
 ```fish
+% cat ~/.config/fish/env.fish
+#!/usr/bin/env fish
+set -g -x EDITOR code
+set -g -x SSH_AUTH_SOCK (gpgconf --list-dirs agent-ssh-socket)
 set -g -x XDG_CONFIG_HOME ~/.config
+```
+
+# Set aliases
+
+```fish
+% cat ~/.config/fish/aliases.fish
+register_alias "bat" "cat" "bat"
+register_alias "exa" "l" "exa -g -l -a --group-directories-first --git-ignore -h --git"
 ```
