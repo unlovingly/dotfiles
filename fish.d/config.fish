@@ -17,3 +17,5 @@ else
 end
 
 source ~/.config/fish/aliases.fish
+
+status --is-interactive; and source (anyenv init -|psub)
