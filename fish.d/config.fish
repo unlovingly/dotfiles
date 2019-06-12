@@ -9,13 +9,11 @@ set -g -x PATH /usr/local/bin $GOPATH/bin ~/.composer/vendor/bin ~/.cargo/bin $P
 
 # for HOMEBREW_GITHUB_API_TOKEN
 if set -q XDG_CONFIG_HOME
-    set -l p $XDG_CONFIG_HOME/fish/env.fish
-    test -f $p && source $p
-else
-    set -l p ~/.config/fish/env.fish
-    test -f $p && source $p
+    sourcess $XDG_CONFIG_HOME/fish/aliases.fish
+    sourcess $XDG_CONFIG_HOME/fish/env.fish
+    sourcess $XDG_CONFIG_HOME/fish/secret_env.fish
 end
 
-source ~/.config/fish/aliases.fish
 
-status --is-interactive; and source (anyenv init -|psub)
+status --is-interactive
+and sourcess (anyenv init -|psub)

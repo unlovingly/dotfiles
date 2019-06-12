@@ -4,6 +4,6 @@ function change_directory_to_repositorys_root -d 'Change current directory to re
     end
 
     if git rev-parse
-        builtin cd (git rev-parse --show-toplevel)
+        cd (git rev-parse --show-toplevel)
     end
 end

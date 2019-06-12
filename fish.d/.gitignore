@@ -1,5 +1,4 @@
 fish_history
 fishd*
-env.fish
-aliases.fish
+secret_env.fish
 fish_variables
