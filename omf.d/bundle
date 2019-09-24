@@ -1,0 +1,6 @@
+package brew
+package composer
+package fasd
+package fzf
+package rustup
+theme default
