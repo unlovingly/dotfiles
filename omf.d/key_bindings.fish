@@ -1,3 +1,2 @@
-function vi_mode_user_key_bindings
-    bind \cj __fzf_cd
-end
+bind --mode insert \cj __fzf_cd
+bind --mode insert \ce select_repository
