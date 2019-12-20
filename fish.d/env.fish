@@ -1,5 +1,5 @@
+set -g -x EDITOR nvim
 set -g -x PATH /usr/local/bin $GOPATH/bin ~/.composer/vendor/bin ~/.cargo/bin $PATH
-set -g -x EDITOR code
 set -g -x SSH_AUTH_SOCK (gpgconf --list-dirs agent-ssh-socket)
 set -g -x LANG ja_JP.UTF-8
 
