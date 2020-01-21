@@ -7,3 +7,4 @@ sourcess $XDG_CONFIG_HOME/fish/env.fish
 sourcess $XDG_CONFIG_HOME/fish/secret_env.fish
 
 status --is-interactive && sourcess (anyenv init - | source)
+starship init fish | source
