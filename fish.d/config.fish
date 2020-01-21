@@ -1,10 +1,10 @@
 set -g -x XDG_CONFIG_HOME ~/.config
 
-sourcess $XDG_CONFIG_HOME/fish/aliases.fish
-sourcess $XDG_CONFIG_HOME/fish/env.fish
+set -l config_files aliases env secret_env
 
-# for HOMEBREW_GITHUB_API_TOKEN
-sourcess $XDG_CONFIG_HOME/fish/secret_env.fish
+for file in $config_files
+    test -f $XDG_CONFIG_HOME/fish/$file.fish && source $XDG_CONFIG_HOME/fish/$file.fish
+end
 
-status --is-interactive && sourcess (anyenv init - | source)
+status --is-interactive && source (anyenv init - | source)
 starship init fish | source

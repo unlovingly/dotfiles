@@ -1,9 +1,9 @@
 set -g -x EDITOR nvim
-set -g -x PATH /usr/local/bin $GOPATH/bin ~/.composer/vendor/bin ~/.cargo/bin $PATH
-set -g -x SSH_AUTH_SOCK (gpgconf --list-dirs agent-ssh-socket)
+set -g -x FZF_DEFAULT_OPTS --exact --layout=reverse --height 15%
 set -g -x LANG ja_JP.UTF-8
+set -g -x SSH_AUTH_SOCK (gpgconf --list-dirs agent-ssh-socket)
 
-set -g fish_key_bindings rebind_keys
+set -g fish_user_paths /usr/local/bin $GOPATH/bin ~/.composer/vendor/bin ~/.cargo/bin $fish_user_paths
 
 set -g GOPATH ~/.local/go
 set -g JAVA_HOME /usr/libexec/java_home
