@@ -1,5 +1,6 @@
-function rebind_keys
+function fish_user_key_bindings
     fish_vi_key_bindings
+    fzf_key_bindings
 
     bind -e -M insert \ce
     bind -e -M insert \cr
@@ -10,4 +11,6 @@ function rebind_keys
     bind -m insert \cr change_directory_to_repositorys_root
     bind -M insert \cr select_history
     bind -M default -m insert \cr execute_from_history
+
+    bind -M insert \t fzf_complete
 end
