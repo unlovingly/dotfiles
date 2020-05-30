@@ -2,6 +2,7 @@ set -g -x EDITOR nvim
 set -g -x FZF_DEFAULT_OPTS --exact --layout=reverse --height 15%
 set -g -x LANG ja_JP.UTF-8
 set -g -x SSH_AUTH_SOCK (gpgconf --list-dirs agent-ssh-socket)
+set -g -x GPG_TTY (tty)
 
 set -g fish_user_paths /usr/local/bin $GOPATH/bin ~/.composer/vendor/bin ~/.cargo/bin $fish_user_paths
 
