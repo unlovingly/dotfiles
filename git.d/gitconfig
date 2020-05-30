@@ -18,7 +18,7 @@
   autocrlf = input
   quotepath = false
   precomposeunicode = true
-	pager = less -S
+  pager = less -S
 [diff]
   algorithm = histogram
   indentHeuristic = true
