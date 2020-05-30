@@ -11,6 +11,4 @@ function fish_user_key_bindings
     bind -m insert \cr change_directory_to_repositorys_root
     bind -M insert \cr select_history
     bind -M default -m insert \cr execute_from_history
-
-    bind -M insert \t fzf_complete
 end
