@@ -1,22 +1,19 @@
 version: "2"
 
 includes:
-  alacritty: ./alacritty.d
   fish: ./fish.d
   git: ./git.d
-  karabiner: ./karabiner.d
+  starship: ./starship.d
 
 tasks:
   clean:
     deps:
-      - alacritty:clean
       - fish:clean
       - git:clean
-      - karabiner:clean
+      - starship:clean
 
   install:
     deps:
-      - alacritty:install
       - fish:install
       - git:install
-      - karabiner:install
+      - starship:install

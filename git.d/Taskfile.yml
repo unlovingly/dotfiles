@@ -12,7 +12,7 @@ tasks:
 
   install:
     cmds:
-      - ln -s "{{.CWD}}/git.d/gitconfig" "{{.TARGET}}"
+      - ln -s "{{.CWD}}/gitconfig" "{{.TARGET}}"
     status:
       - test -h "{{.TARGET}}"
     vars:

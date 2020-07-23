@@ -1,18 +1,18 @@
 version: "2"
 
 vars:
-  TARGET: "{{.XDG_CONFIG_HOME}}/fish/config.fish"
+  TARGET: "{{.XDG_CONFIG_HOME}}/starship.toml"
 
 tasks:
   clean:
     cmds:
       - unlink "{{.TARGET}}"
     status:
-      - test -h "{{.TARGET}}"
+      - test ! -L "{{.TARGET}}"
 
   install:
     cmds:
-      - ln -s "{{.CWD}}/config.fish" "{{.TARGET}}"
+      - ln -s "{{.CWD}}/starship.toml" "{{.TARGET}}"
     status:
       - test -e "{{.TARGET}}"
     vars:

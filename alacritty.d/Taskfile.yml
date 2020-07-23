@@ -12,7 +12,7 @@ tasks:
 
   install:
     cmds:
-      - ln -s "{{.CWD}}/alacritty.d/alacritty.yml" "{{.TARGET}}"
+      - ln -s "{{.CWD}}/alacritty.yml" "{{.TARGET}}"
     status:
       - test -e "{{.TARGET}}"
     vars:

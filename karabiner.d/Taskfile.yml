@@ -12,7 +12,7 @@ tasks:
 
   install:
     cmds:
-      - ln -s "{{.CWD}}/karabiner.d/karabiner.yml" "{{.TARGET}}"
+      - ln -s "{{.CWD}}/karabiner.yml" "{{.TARGET}}"
     status:
       - test -h "{{.TARGET}}"
     vars:
