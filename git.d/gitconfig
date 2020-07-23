@@ -33,3 +33,5 @@
   rebase = preserve
 [push]
   default = simple
+[protocol]
+  version = 2
