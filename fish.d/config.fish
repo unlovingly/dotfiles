@@ -8,3 +8,4 @@ end
 
 status --is-interactive && source (anyenv init - | source)
 starship init fish | source
+zoxide init fish | source
