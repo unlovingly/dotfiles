@@ -1,0 +1,20 @@
+version: "2"
+
+vars:
+  TARGET: "{{.XDG_CONFIG_HOME}}/yabai/yabairc"
+
+tasks:
+  clean:
+    cmds:
+      - unlink "{{.TARGET}}"
+    status:
+      - test ! -L "{{.TARGET}}"
+
+  install:
+    cmds:
+      - ln -s "{{.CWD}}/yabairc" "{{.TARGET}}"
+    status:
+      - test -e "{{.TARGET}}"
+    vars:
+      CWD:
+        sh: pwd

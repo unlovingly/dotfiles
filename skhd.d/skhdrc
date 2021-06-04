@@ -1,0 +1,54 @@
+:: default : yabai -m config window_border off
+
+ctrl + cmd - h : if test 'stack' = (yabai -m config layout); yabai -m window --focus stack.next; else; yabai -m window --focus west; end
+ctrl + cmd - j : if test 'stack' = (yabai -m config layout); yabai -m window --focus stack.next; else; yabai -m window --focus south; end
+ctrl + cmd - k : if test 'stack' = (yabai -m config layout); yabai -m window --focus stack.prev; else; yabai -m window --focus north; end
+ctrl + cmd - l : if test 'stack' = (yabai -m config layout); yabai -m window --focus stack.prev; else; yabai -m window --focus east; end
+
+ctrl + alt + cmd - h : if test 'stack' = (yabai -m config layout); yabai -m window --swap stack.next; else; yabai -m window --swap west; end
+ctrl + alt + cmd - j : if test 'stack' = (yabai -m config layout); yabai -m window --swap stack.next; else; yabai -m window --swap south; end
+ctrl + alt + cmd - k : if test 'stack' = (yabai -m config layout); yabai -m window --swap stack.prev; else; yabai -m window --swap north; end
+ctrl + alt + cmd - l : if test 'stack' = (yabai -m config layout); yabai -m window --swap stack.prev; else; yabai -m window --swap east; end
+
+:: displays : yabai -m config window_border on
+ctrl + alt + cmd - d ; displays
+
+displays < ctrl + alt + cmd - d ; default
+
+displays < ctrl + cmd - h : yabai -m window --display next
+displays < ctrl + cmd - j : yabai -m window --display next
+displays < ctrl + cmd - k : yabai -m window --display prev
+displays < ctrl + cmd - l : yabai -m window --display prev
+
+:: spaces : yabai -m config window_border on
+ctrl + alt + cmd - s ; spaces
+
+spaces < ctrl + alt + cmd - d ; default
+spaces < ctrl + alt + cmd - s ; default
+
+spaces < ctrl + cmd - h : yabai -m window --space next
+spaces < ctrl + cmd - j : yabai -m window --space next
+spaces < ctrl + cmd - k : yabai -m window --space prev
+spaces < ctrl + cmd - l : yabai -m window --space prev
+
+:: warp : yabai -m config window_border on
+ctrl + alt + cmd - w ; warp
+
+warp < ctrl + alt + cmd - d ; default
+warp < ctrl + alt + cmd - w ; default
+
+warp < ctrl + cmd - h : yabai -m window --warp west
+warp < ctrl + cmd - j : yabai -m window --warp south
+warp < ctrl + cmd - k : yabai -m window --warp north
+warp < ctrl + cmd - l : yabai -m window --warp east
+
+# misc
+ctrl + cmd - r : yabai -m space --balance
+ctrl + alt + cmd - r : yabai -m space --rotate 270
+
+ctrl + cmd - f : yabai -m window --toggle native-fullscreen
+
+ctrl + cmd - b : yabai -m space --layout bsp
+ctrl + cmd - s : yabai -m space --layout stack
+
+ctrl + cmd - t : yabai -m split --toggle split

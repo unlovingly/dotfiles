@@ -1,0 +1,20 @@
+version: "2"
+
+vars:
+  TARGET: "{{.XDG_CONFIG_HOME}}/skhd/skhdrc"
+
+tasks:
+  clean:
+    cmds:
+      - unlink "{{.TARGET}}"
+    status:
+      - test ! -L "{{.TARGET}}"
+
+  install:
+    cmds:
+      - ln -s "{{.CWD}}/skhdrc" "{{.TARGET}}"
+    status:
+      - test -e "{{.TARGET}}"
+    vars:
+      CWD:
+        sh: pwd
