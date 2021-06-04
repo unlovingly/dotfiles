@@ -1,18 +1,18 @@
-version: "2"
+version: '3'
 
 vars:
-  TARGET: "{{.XDG_CONFIG_HOME}}/skhd/skhdrc"
+  TARGET: "{{.XDG_CONFIG_HOME}}/fish/config.fish"
 
 tasks:
   clean:
     cmds:
       - unlink "{{.TARGET}}"
     status:
-      - test ! -L "{{.TARGET}}"
+      - test -h "{{.TARGET}}"
 
   install:
     cmds:
-      - ln -s "{{.CWD}}/skhdrc" "{{.TARGET}}"
+      - ln -s "{{.CWD}}/config.fish" "{{.TARGET}}"
     status:
       - test -e "{{.TARGET}}"
     vars:

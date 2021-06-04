@@ -1,17 +1,19 @@
-version: "2"
+version: '3'
 
 includes:
-  fish: ./fish.d
+  fish: ./fish.d/Taskfile_{{OS}}.yml
   git: ./git.d
-  skhd: ./skhd.d
+  karabiner: ./karabiner.d/Taskfile_{{OS}}.yml
+  skhd: ./skhd.d/Taskfile_{{OS}}.yml
   starship: ./starship.d
-  yabai: ./yabai.d
+  yabai: ./yabai.d/Taskfile_{{OS}}.yml
 
 tasks:
   clean:
     deps:
       - fish:clean
       - git:clean
+      - karabiner:clean
       - skhd:clean
       - starship:clean
       - yabai:clean
@@ -20,6 +22,7 @@ tasks:
     deps:
       - fish:install
       - git:install
+      - karabiner:install
       - skhd:install
       - starship:install
       - yabai:install
