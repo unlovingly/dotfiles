@@ -1,4 +1,5 @@
 [alias]
+  br = branch
   ci = commit
   cia = commit --amend --no-edit
   cim = commit -m
