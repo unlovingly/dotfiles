@@ -3,17 +3,23 @@ version: "2"
 includes:
   fish: ./fish.d
   git: ./git.d
+  skhd: ./skhd.d
   starship: ./starship.d
+  yabai: ./yabai.d
 
 tasks:
   clean:
     deps:
       - fish:clean
       - git:clean
+      - skhd:clean
       - starship:clean
+      - yabai:clean
 
   install:
     deps:
       - fish:install
       - git:install
+      - skhd:install
       - starship:install
+      - yabai:install
