@@ -1,14 +1,13 @@
 version: '3'
 
-vars:
-  TARGET: "{{.XDG_CONFIG_HOME}}/fish/config.fish"
-
 tasks:
   clean:
     cmds:
       - unlink "{{.TARGET}}"
     status:
       - test -h "{{.TARGET}}"
+    vars:
+      TARGET: "{{.XDG_CONFIG_HOME}}/fish/config.fish"
 
   install:
     cmds:
@@ -18,3 +17,4 @@ tasks:
     vars:
       CWD:
         sh: pwd
+      TARGET: "{{.XDG_CONFIG_HOME}}/fish/config.fish"

@@ -1,12 +1,24 @@
 version: '3'
 
 includes:
-  fish: ./fish.d/Taskfile_{{OS}}.yml
-  git: ./git.d
-  karabiner: ./karabiner.d/Taskfile_{{OS}}.yml
-  skhd: ./skhd.d/Taskfile_{{OS}}.yml
-  starship: ./starship.d
-  yabai: ./yabai.d/Taskfile_{{OS}}.yml
+  fish:
+    dir: ./fish.d
+    taskfile: ./fish.d/Taskfile_{{OS}}.yml
+  git:
+    dir: ./git.d
+    taskfile: ./git.d
+  karabiner:
+    dir: ./karabiner.d
+    taskfile: ./karabiner.d/Taskfile_{{OS}}.yml
+  skhd:
+    dir: ./skhd.d
+    taskfile: ./skhd.d/Taskfile_{{OS}}.yml
+  starship:
+    dir: ./starship.d
+    taskfile: ./starship.d
+  yabai:
+    dir: ./yabai.d
+    taskfile: ./yabai.d/Taskfile_{{OS}}.yml
 
 tasks:
   clean:

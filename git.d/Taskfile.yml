@@ -1,10 +1,9 @@
 version: '3'
 
-vars:
-  TARGET: "~/.gitconfig"
-
 tasks:
   clean:
+    vars:
+      TARGET: "{{.HOME}}/.gitconfig"
     cmds:
       - unlink "{{.TARGET}}"
     status:
@@ -18,3 +17,4 @@ tasks:
     vars:
       CWD:
         sh: pwd
+      TARGET: "{{.HOME}}/.gitconfig"

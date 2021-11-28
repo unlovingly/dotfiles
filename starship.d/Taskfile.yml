@@ -1,20 +1,20 @@
 version: '3'
 
-vars:
-  TARGET: "{{.XDG_CONFIG_HOME}}/starship.toml"
-
 tasks:
   clean:
     cmds:
       - unlink "{{.TARGET}}"
     status:
       - test ! -L "{{.TARGET}}"
+    vars:
+      TARGET: "{{.XDG_CONFIG_HOME}}/starship.toml"
 
   install:
     cmds:
       - ln -s "{{.CWD}}/starship.toml" "{{.TARGET}}"
     status:
-      - test -e "{{.TARGET}}"
+      - test -L "{{.TARGET}}"
     vars:
       CWD:
         sh: pwd
+      TARGET: "{{.XDG_CONFIG_HOME}}/starship.toml"
