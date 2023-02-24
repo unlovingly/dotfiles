@@ -1,3 +1,8 @@
 alias cat="bat"
+alias du="dust"
+alias find="fd"
 alias la="exa -g -l -a --group-directories-first --git-ignore -h --git"
+alias ps="procs"
+alias sed="sd"
+alias top="btm"
 alias vi="nvim"

@@ -1,55 +1,29 @@
-tap "homebrew/bundle"
-tap "homebrew/cask"
-tap "homebrew/cask-drivers"
-tap "homebrew/cask-versions"
-tap "homebrew/core"
-tap "go-task/tap"
+tap "homebrew/cask-fonts"
 
-brew "anyenv"
 brew "bat"
+brew "bottom"
+brew "dust"
 brew "exa"
 brew "fd"
 brew "fish"
-brew "fzf"
 brew "ghq"
 brew "git"
-brew "gnu-sed"
-brew "go-task/tap/go-task"
-brew "mas"
-brew "p7zip"
+brew "neovim"
+brew "procs"
 brew "ripgrep"
-brew "sbt"
-brew "scala"
+brew "sd"
+brew "sevenzip"
+brew "sk"
+brew "starship"
 brew "skhd"
-brew "tldr"
-brew "yarn"
 brew "yabai"
+brew "zoxide"
 
+cask "1password"
+cask "adobe-creative-cloud"
 cask "alacritty"
-cask "alfred"
-cask "docker"
-cask "dockstation"
-cask "dropbox"
-cask "gitkraken"
-cask "gitter"
-cask "google-japanese-ime"
-cask "intellij-idea-ce"
+cask "cleanmymac"
+cask "font-inconsolata-nerd-font"
+cask "jetbrains-toolbox"
 cask "karabiner-elements"
-cask "kindle"
-cask "logitech-options"
-cask "optionspace"
-cask "spotify"
-cask "teamsql"
-cask "visual-studio-code"
-
-mas "1Password 7", id: 1333542190
-mas "Dropshelf", id: 540404405
-mas "Keynote", id: 409183694
-mas "LINE", id: 539883307
-mas "Paste", id: 967805235
-mas "Pixelmator", id: 407963104
-mas "Pixelmator Pro", id: 1289583905
-mas "Pocket", id: 568494494
-mas "PopClip", id: 445189367
-mas "Spark", id: 1176895641
-mas "Tweetbot", id: 1384080005
+cask "vivaldi"

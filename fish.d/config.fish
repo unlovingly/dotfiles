@@ -1,5 +1,7 @@
 set -g -x XDG_CONFIG_HOME ~/.config
 
+/opt/homebrew/bin/brew shellenv | source
+
 set -l config_files aliases env secret_env
 
 for file in $config_files
