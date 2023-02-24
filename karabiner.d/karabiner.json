@@ -1,8 +1,10 @@
 {
     "global": {
+        "ask_for_confirmation_before_quitting": false,
         "check_for_updates_on_startup": true,
         "show_in_menu_bar": false,
-        "show_profile_name_in_menu_bar": false
+        "show_profile_name_in_menu_bar": false,
+        "unsafe_ui": false
     },
     "profiles": [
         {
@@ -156,6 +158,78 @@
                                 "type": "basic"
                             }
                         ]
+                    },
+                    {
+                        "description": "Quit application by pressing command-q twice",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "command-q",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "q",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "command"
+                                        ],
+                                        "optional": [
+                                            "caps_lock"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "q",
+                                        "modifiers": "left_command"
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "q",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "command"
+                                        ],
+                                        "optional": [
+                                            "caps_lock"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "set_variable": {
+                                            "name": "command-q",
+                                            "value": 1
+                                        }
+                                    }
+                                ],
+                                "to_delayed_action": {
+                                    "to_if_canceled": [
+                                        {
+                                            "set_variable": {
+                                                "name": "command-q",
+                                                "value": 0
+                                            }
+                                        }
+                                    ],
+                                    "to_if_invoked": [
+                                        {
+                                            "set_variable": {
+                                                "name": "command-q",
+                                                "value": 0
+                                            }
+                                        }
+                                    ]
+                                },
+                                "type": "basic"
+                            }
+                        ]
                     }
                 ]
             },
@@ -164,51 +238,15 @@
                     "disable_built_in_keyboard_if_exists": false,
                     "fn_function_keys": [],
                     "identifiers": {
-                        "is_keyboard": true,
-                        "is_pointing_device": false,
-                        "product_id": 6168,
-                        "vendor_id": 1241
-                    },
-                    "ignore": false,
-                    "manipulate_caps_lock_led": false,
-                    "simple_modifications": [
-                        {
-                            "from": {
-                                "key_code": "application"
-                            },
-                            "to": [
-                                {
-                                    "key_code": "fn"
-                                }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    "disable_built_in_keyboard_if_exists": false,
-                    "fn_function_keys": [],
-                    "identifiers": {
-                        "is_keyboard": true,
-                        "is_pointing_device": false,
-                        "product_id": 50475,
+                        "is_keyboard": false,
+                        "is_pointing_device": true,
+                        "product_id": 45085,
                         "vendor_id": 1133
                     },
                     "ignore": true,
                     "manipulate_caps_lock_led": false,
-                    "simple_modifications": []
-                },
-                {
-                    "disable_built_in_keyboard_if_exists": false,
-                    "fn_function_keys": [],
-                    "identifiers": {
-                        "is_keyboard": true,
-                        "is_pointing_device": false,
-                        "product_id": 320,
-                        "vendor_id": 2131
-                    },
-                    "ignore": false,
-                    "manipulate_caps_lock_led": false,
-                    "simple_modifications": []
+                    "simple_modifications": [],
+                    "treat_as_built_in_keyboard": false
                 },
                 {
                     "disable_built_in_keyboard_if_exists": false,
@@ -220,8 +258,9 @@
                         "vendor_id": 2131
                     },
                     "ignore": false,
-                    "manipulate_caps_lock_led": false,
-                    "simple_modifications": []
+                    "manipulate_caps_lock_led": true,
+                    "simple_modifications": [],
+                    "treat_as_built_in_keyboard": false
                 }
             ],
             "fn_function_keys": [
@@ -231,7 +270,7 @@
                     },
                     "to": [
                         {
-                            "key_code": "vk_consumer_brightness_down"
+                            "consumer_key_code": "display_brightness_decrement"
                         }
                     ]
                 },
@@ -241,7 +280,7 @@
                     },
                     "to": [
                         {
-                            "key_code": "vk_consumer_brightness_up"
+                            "consumer_key_code": "display_brightness_increment"
                         }
                     ]
                 },
@@ -251,7 +290,7 @@
                     },
                     "to": [
                         {
-                            "key_code": "vk_mission_control"
+                            "apple_vendor_keyboard_key_code": "mission_control"
                         }
                     ]
                 },
@@ -261,7 +300,7 @@
                     },
                     "to": [
                         {
-                            "key_code": "vk_launchpad"
+                            "apple_vendor_keyboard_key_code": "spotlight"
                         }
                     ]
                 },
@@ -271,7 +310,7 @@
                     },
                     "to": [
                         {
-                            "key_code": "vk_consumer_illumination_down"
+                            "consumer_key_code": "dictation"
                         }
                     ]
                 },
@@ -281,7 +320,7 @@
                     },
                     "to": [
                         {
-                            "key_code": "vk_consumer_illumination_up"
+                            "key_code": "f6"
                         }
                     ]
                 },
@@ -291,7 +330,7 @@
                     },
                     "to": [
                         {
-                            "key_code": "vk_consumer_previous"
+                            "consumer_key_code": "rewind"
                         }
                     ]
                 },
@@ -301,7 +340,7 @@
                     },
                     "to": [
                         {
-                            "key_code": "vk_consumer_play"
+                            "consumer_key_code": "play_or_pause"
                         }
                     ]
                 },
@@ -311,7 +350,7 @@
                     },
                     "to": [
                         {
-                            "key_code": "vk_consumer_next"
+                            "consumer_key_code": "fast_forward"
                         }
                     ]
                 },
@@ -321,7 +360,7 @@
                     },
                     "to": [
                         {
-                            "key_code": "mute"
+                            "consumer_key_code": "mute"
                         }
                     ]
                 },
@@ -331,7 +370,7 @@
                     },
                     "to": [
                         {
-                            "key_code": "volume_down"
+                            "consumer_key_code": "volume_decrement"
                         }
                     ]
                 },
@@ -341,7 +380,7 @@
                     },
                     "to": [
                         {
-                            "key_code": "volume_up"
+                            "consumer_key_code": "volume_increment"
                         }
                     ]
                 }
@@ -353,10 +392,8 @@
             "selected": true,
             "simple_modifications": [],
             "virtual_hid_keyboard": {
-                "caps_lock_delay_milliseconds": 0,
                 "country_code": 0,
                 "indicate_sticky_modifier_keys_state": true,
-                "keyboard_type": "ansi",
                 "mouse_key_xy_scale": 100
             }
         }
