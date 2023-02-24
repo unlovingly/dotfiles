@@ -1,5 +1,6 @@
 tap "homebrew/cask-fonts"
 
+brew "asdf"
 brew "bat"
 brew "bottom"
 brew "dust"

@@ -11,3 +11,5 @@ end
 starship init fish | source
 zoxide init fish | source
 
+
+source /opt/homebrew/opt/asdf/libexec/asdf.fish
